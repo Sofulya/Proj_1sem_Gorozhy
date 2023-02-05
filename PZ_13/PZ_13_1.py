@@ -4,14 +4,18 @@ from random import randint
 
 # Заносим в переменные параметры матрицы
 a, b, c, d, e = [int(input(i)) for i in ("Количество строк: ", "Количество столбцов: ",
-                                         "От = ", "До = ",
+                                         "От: ", "До: ",
                                          "Строка, значения которой увеличим на 3: ")]
 matrix = [[randint(c, d) for _ in range(b)] for j in range(a)]  # Заполняем матрицу случайными числами
-print("Исходная матрица: ", '\n', [i for i in matrix])
+print(f"Исходная матрица: ")
+for i in matrix:
+    print(*i, sep='\t')
 s = []
 #  Проходим по выбранной строке и увеличиваем элементы на 3, занося в массив s
 for i in matrix[e - 1]:
     s.append(i + 3)
 #  Приравниваем выбранную строку матрицы к массиву
 matrix[e - 1] = s
-print("Полученная матрица: ", '\n', [i for i in matrix])
+print(f"Полученная матрица: ")
+for i in matrix:
+    print(*i, sep='\t')
