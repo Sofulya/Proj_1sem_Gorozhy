@@ -2,7 +2,7 @@ default_radius = 5
 
 
 def circle_perimeter(r=default_radius):
-    """Вычисляет длину окружности.
+    """Вычисляет периметр окружности.
     Необходимо значение радиуса."""
     return 2 * 3.14 * r
 
