@@ -46,7 +46,7 @@ with sq.connect('library.db') as con:  # Подключеие к БД
     REFERENCES authors ON DELETE CASCADE ON UPDATE CASCADE
     );""")
 
-with sq.connect('Library.db') as con:
+with sq.connect('library.db') as con:
     cur = con.cursor()
     cur.executemany("INSERT INTO authors VALUES (?, ?, ?)", info_authors)
     cur.executemany("INSERT INTO books VALUES (?, ?, ?, ?, ?, ?)", info_books)
