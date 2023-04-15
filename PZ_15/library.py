@@ -82,7 +82,7 @@ with sq.connect('library.db') as con:
     for result_5 in cur.execute("SELECT surname, name FROM authors ORDER BY surname, name"):
         print(*result_5)
 
-    print('\n6.')  # поработать над ним
+    print('\n6.')
     for result_6 in cur.execute("SELECT name, year_publishing FROM books ORDER BY name, year_publishing"):
         print(*result_6)
 
@@ -146,7 +146,7 @@ with sq.connect('library.db') as con:
 #     WHERE sections.section = books.id_section)""")
 #
 #     # 9. Обновление года издания в таблице books по году издания в таблице author_book:
-#     cur.execute("""UPDATE books SET year_publishing = 2022
+#     cur.execute("""UPDATE books SET year_publishing = '2022 г.'
 #                 WHERE id_book IN (SELECT id_book FROM author_book WHERE year_publishing = 2021)""")
 #
 #     # 10. Обновление места хранения в таблице books по названию издательства в таблице publishing:
