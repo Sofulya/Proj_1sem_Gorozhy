@@ -150,23 +150,23 @@ with sq.connect('library.db') as con:
 #                 WHERE id_book IN (SELECT id_book FROM author_book WHERE year_publishing = 2021)""")
 #
 #     # 10. Обновление места хранения в таблице books по названию издательства в таблице publishing:
-#     cur.execute("""UPDATE books SET storage = 'Книжный шкаф 1'
-#                 WHERE id_publishing IN (SELECT id_publishing FROM publishing WHERE publishing = 'Издательство А')""")
+#     cur.execute("""UPDATE books SET storage = 'Книжный шкаф 3'
+#                 WHERE id_publishing IN (SELECT id_publishing FROM publishing WHERE publishing = 'Эксмо')""")
 #
 #     # 11. Обновление фамилии автора в таблице authors по коду автора в таблице author_book:
 #     cur.execute("""UPDATE authors SET surname = 'Новая фамилия'
 #                 WHERE id_author IN (SELECT id_author FROM author_book WHERE id_author = 1)""")
 #
 #     # 12. Обновить год издания всех книг, изданных в городе "Москва", на 2022 год.
-#     cur.execute("""UPDATE books SET year_publish = 2022
+#     cur.execute("""UPDATE books SET year_publishing = '2022 г.'
 #                 WHERE id_publishing IN (SELECT id_publishing FROM publishing WHERE city = 'Москва')""")
 #
 #     # 13. Обновить место хранения всех книг, написанных автором с фамилией "Иванов", на "Книжный шкаф 1".
-#     cur.execute("""UPDATE books SET storage = 'Книжный шкаф 1' WHERE id_books IN (SELECT id_book FROM author_book
+#     cur.execute("""UPDATE books SET storage = 'Книжный шкаф 1' WHERE id_book IN (SELECT id_book FROM author_book
 #     WHERE id_author IN (SELECT id_author FROM authors WHERE surname = 'Иванов'))""")
 #
 #     # 14. Обновить год издания всех книг, написанных автором с именем "Анна", на 2023 год.
-#     cur.execute("""UPDATE books SET year_publish = 2023 WHERE id_books IN (SELECT id_book FROM author_book
+#     cur.execute("""UPDATE books SET year_publishing = '2023 г.' WHERE id_book IN (SELECT id_book FROM author_book
 #     WHERE id_author IN (SELECT id_author FROM authors WHERE name = 'Анна'))""")
 #
 #     # 15. Обновить название раздела всех книг, изданных в городе "Санкт-Петербург", на "Классика".
