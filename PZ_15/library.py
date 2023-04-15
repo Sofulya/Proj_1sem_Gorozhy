@@ -19,7 +19,7 @@ with sq.connect('library.db') as con:  # Подключеие к БД
     cur.execute("""CREATE TABLE IF NOT EXISTS books (
     id_book INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
-    year_publishing TEXT,
+    year_publishing DATE,
     storage TEXT,
     id_section INTEGER
     REFERENCES sections ON DELETE CASCADE ON UPDATE CASCADE,
