@@ -174,5 +174,5 @@ with sq.connect('library.db') as con:
 #                 WHERE id_publishing IN (SELECT id_publishing FROM publishing WHERE city = 'Санкт-Петербург')""")
 #
 #     # 16. Обновить год издания всех книг, написанных автором с фамилией "Петров", на 2024 год.
-#     cur.execute("""UPDATE books SET year_publish = 2024 WHERE id_books IN (SELECT id_book FROM author_book
+#     cur.execute("""UPDATE books SET year_publishing = '2024 г.' WHERE id_book IN (SELECT id_book FROM author_book
 #                 WHERE id_author IN (SELECT id_author FROM authors WHERE surname = 'Петров'))""")
