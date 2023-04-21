@@ -176,3 +176,71 @@ with sq.connect('library.db') as con:
 #     # 16. Обновить год издания всех книг, написанных автором с фамилией "Петров", на 2024 год.
 #     cur.execute("""UPDATE books SET year_publishing = '2024 г.' WHERE id_book IN (SELECT id_book FROM author_book
 #                 WHERE id_author IN (SELECT id_author FROM authors WHERE surname = 'Петров'))""")
+
+
+# DELETES (SQL-запросы на удаление данных из БД)
+# with sq.connect('library.db') as con:
+#     cur = con.cursor()
+#
+#     # 1. Удалить все записи из таблицы Книги, у которых Раздел = 'Фантастика':
+#     cur.execute("DELETE FROM books WHERE id_section = (SELECT id_section FROM sections WHERE section = 'Фантастика')")
+#
+#     # 2. Удалить все записи из таблицы Книги, у которых ГодИздания меньше 2000:
+#     cur.execute("DELETE FROM books WHERE year_publishing < 2000")
+#
+#     # 3. Удалить все записи из таблицы АвторКниги, у которых КодАвтора равен 1:
+#     cur.execute("DELETE FROM author_book WHERE id_author = 1")
+#
+#     # 4. Удалить все записи из таблицы Авторы, у которых Фамилия начинается с буквы "А":
+#     cur.execute("DELETE FROM authors WHERE surname LIKE 'А%'")
+#
+#     # 5. Удалить все записи из таблицы Издательства, у которых Город равен "Москва":
+#     cur.execute("DELETE FROM publishing WHERE city = 'Москва'")
+#
+#     # 6. Удалить все записи из таблицы АвторКниги, у которых КодКниги равен 10:
+#     cur.execute("DELETE FROM author_book WHERE id_book = 10")
+#
+#     # 7. Удалить все записи из таблицы Книги, у которых МестоХранения равно "Склад":
+#     cur.execute("DELETE FROM books WHERE storage = 'Склад'")
+#
+#     # 8. Удалить все записи из таблицы Разделы, у которых Раздел равен "Детективы":
+#     cur.execute("DELETE FROM sections WHERE section = 'Детективы'")
+#
+#     # 9. Удалить все записи из таблицы АвторКниги, у которых КодАвтора равен 2:
+#     cur.execute("DELETE FROM author_book WHERE id_author = 2")
+#
+#     # 10. Удалить все записи из таблицы Издательства, у которых Издательство равно "OReilly Media":
+#     cur.execute("DELETE FROM publishing WHERE publishing = 'OReilly Media'")
+#
+#     # 11. Удалить все записи из таблицы Книги, у которых Название содержит слово "Война":
+#     cur.execute("DELETE FROM books WHERE name LIKE '%Война%'")
+#
+#     # 12. Удалить все книги, которые были изданы до 2000 года включительно и хранятся в "Библиотека №1".
+#     cur.execute("DELETE FROM books WHERE year_publishing <= 2000 AND storage = 'Библиотека №1'")
+#
+#     # 13. Удалить всех авторов, у которых нет книг в таблице Книги.
+#     cur.execute("DELETE FROM authors WHERE id_author NOT IN (SELECT DISTINCT id_author FROM author_book)")
+#
+#     # 14. Удалить все книги, изданные в городе "Москва", из таблицы "Книги".
+#     cur.execute("DELETE FROM books WHERE id_publishing IN (SELECT id_publishing FROM publishing WHERE city = 'Москва')")
+#
+#     # 15. Удалить всех авторов, чьи фамилии начинаются на букву "А" из таблицы "authors" и соответствующие записи из
+#     # таблицы "author_book".
+#     cur.execute("DELETE FROM authors WHERE surname LIKE 'А%' AND id_author IN (SELECT id_author FROM author_book)")
+#     cur.execute("DELETE FROM author_book WHERE id_author IN (SELECT id_author FROM authors WHERE surname LIKE 'А%')")
+#
+#     # 16. Удалить все записи из таблицы "author_book", связанные с книгами, изданными в городе "Москва".
+#     cur.execute("""DELETE FROM author_book WHERE id_book IN (SELECT id_books FROM books
+#     WHERE id_publish IN (SELECT id_publish FROM publishing WHERE city = 'Москва'))""")
+#
+#     # 17. Удалить все книги из таблицы "books", которые были написаны авторами с фамилиями, начинающимися на букву "П"
+#     cur.execute("""DELETE FROM books WHERE id_book IN (SELECT id_book FROM author_book
+#     WHERE id_author IN (SELECT id_author FROM authors WHERE surname LIKE 'П%'))""")
+#
+#     # 18. Удалить все книги из таблицы "books", которые были изданы в городах с названиями, начинающимися на букву "Н"
+#     cur.execute("DELETE FROM books WHERE id_publishing IN (SELECT id_publishing FROM publishing WHERE city LIKE 'Н%')")
+#
+#     # 19. Удалить все записи из таблицы "author_book", связанные с книгами, изданными в городах, название которых
+#     # начинается на букву "Н"
+#     cur.execute("""DELETE FROM author_book WHERE id_book IN ( SELECT id_book FROM books JOIN
+#     publishing ON books.id_publishing = publishing.id_publishing WHERE publishing.city LIKE 'Н%')""")
