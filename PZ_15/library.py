@@ -230,8 +230,8 @@ with sq.connect('library.db') as con:
 #     cur.execute("DELETE FROM author_book WHERE id_author IN (SELECT id_author FROM authors WHERE surname LIKE 'А%')")
 #
 #     # 16. Удалить все записи из таблицы "author_book", связанные с книгами, изданными в городе "Москва".
-#     cur.execute("""DELETE FROM author_book WHERE id_book IN (SELECT id_books FROM books
-#     WHERE id_publish IN (SELECT id_publish FROM publishing WHERE city = 'Москва'))""")
+#     cur.execute("""DELETE FROM author_book WHERE id_book IN (SELECT id_book FROM books
+#     WHERE id_publishing IN (SELECT id_publishing FROM publishing WHERE city = 'Москва'))""")
 #
 #     # 17. Удалить все книги из таблицы "books", которые были написаны авторами с фамилиями, начинающимися на букву "П"
 #     cur.execute("""DELETE FROM books WHERE id_book IN (SELECT id_book FROM author_book
